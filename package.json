@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/CatHecker.github.io/Todolist",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -31,12 +32,15 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -50,5 +54,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@storybook/addon-docs": "^9.1.5",
+    "@storybook/addon-onboarding": "^9.1.5",
+    "@storybook/preset-create-react-app": "^9.1.5",
+    "@storybook/react-webpack5": "^9.1.5",
+    "eslint-plugin-storybook": "^9.1.4",
+    "prop-types": "^15.8.1",
+    "storybook": "^9.1.4",
+    "webpack": "^5.101.3"
   }
 }

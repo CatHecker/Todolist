@@ -1,19 +1,20 @@
-import { ChangeEvent, KeyboardEvent, useState } from "react";
+import React, { ChangeEvent, KeyboardEvent, useState } from "react";
 import { AddItemFromPropsType } from "./Todolist";
 import { IconButton, TextField } from "@mui/material";
 import { Add } from "@mui/icons-material";
 
-export const AddItemInput = (props: AddItemFromPropsType) => {
+export const AddItemInput = React.memo((props: AddItemFromPropsType) => {
+  console.log("render item input");
   const [inputValue, setInputValue] = useState("");
   const [error, setError] = useState<string | null>(null);
   const onChangeAddTask = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   };
   const enterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-    setError("");
+    if (error !== null) setError("");
     if (e.code === "Enter") addTask();
   };
-  const addTask = () => {
+  const addTask = () => { 
     if (inputValue.trim() !== "") {
       props.addItem(inputValue);
       setInputValue("");
@@ -37,4 +38,4 @@ export const AddItemInput = (props: AddItemFromPropsType) => {
       </IconButton>
     </div>
   );
-};
+});

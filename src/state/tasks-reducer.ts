@@ -76,24 +76,16 @@ export const TaskReducer = (
       return stateCopy;
     }
     case "CHANGE_TASK_STATUS": {
-      const stateCopy = { ...state };
-      const tasks = stateCopy[action.todolistId];
-      const filteredTasks = tasks.map((t) => {
-        if (t.id === action.id) t.isDone = action.status;
-        return t;
-      });
-      stateCopy[action.todolistId] = filteredTasks;
-      return stateCopy;
+      state[action.todolistId] = state[action.todolistId].map((t) =>
+        t.id === action.id ? { ...t, isDone: action.status } : t
+      );
+      return { ...state };
     }
     case "CHANGE_TASK_TITLE": {
-      const stateCopy = { ...state };
-      const tasks = stateCopy[action.todolistId];
-      const filteredTasks = tasks.map((t) => {
-        if (t.id === action.id) t.title = action.title;
-        return t;
-      });
-      stateCopy[action.todolistId] = filteredTasks;
-      return stateCopy;
+      state[action.todolistId] = state[action.todolistId].map((t) =>
+        t.id === action.id ? { ...t, title: action.title } : t
+      );
+      return state;
     }
     case "ADD-TODOLIST": {
       const stateCopy = { ...state };
