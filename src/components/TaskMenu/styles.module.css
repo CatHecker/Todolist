@@ -1,0 +1,41 @@
+.box {
+  color: white;
+  padding: 0.5em 1.5em;
+}
+.topContainer {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--dark-taskMenu-color);
+  padding: 1em 0;
+}
+
+.taskTitle {
+  font-size: 1.5em;
+}
+
+.taskMenuList {
+  color: rgb(231, 231, 231);
+}
+
+.taskMenuList p {
+  padding: 0.5em;
+}
+
+.deleteItem {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  padding: 0.5em;
+  border-radius: 50%;
+  transition: "all 0.25s ease";
+  background-color: var(--taskMenu-color);
+}
+
+.deleteItem:hover {
+  background-color: var(--dark-taskMenu-color);
+  cursor: pointer;
+}
+
+.taskDescription {
+  width: 100%;
+}

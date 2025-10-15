@@ -1,0 +1,10 @@
+.themesBlock {
+  background-color: var(--taskMenu-color);
+  transition: all 0.2s;
+  border-radius: 1.5em;
+  padding: 0 1.5em 0 0.5em;
+}
+
+.open {
+  background-color: var(--dark-taskMenu-color);
+}

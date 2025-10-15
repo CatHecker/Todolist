@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
-import { EditableSpan } from "../components/editableSpan";
+import { EditableSpan } from "../components/EditableText/editableSpan";
 
 const meta = {
   title: "EditableSpan component",
@@ -14,6 +14,10 @@ export const SpanExample: Story = {
     title: "HTml",
     onChange: (newValue: string) => {
       console.log(newValue);
+    },
+    editMode: false,
+    setMode: (mode: boolean) => {
+      console.log("setmode");
     },
   },
 };

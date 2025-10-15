@@ -1,0 +1,15 @@
+.todolist {
+  background-color: var(--main-primary);
+  color: white;
+  padding: 0.7em 1em 1em 1em;
+  border-radius: 2em;
+  -webkit-box-shadow: 2px 2px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 2px 2px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 2px 2px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.TodolistTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

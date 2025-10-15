@@ -1,0 +1,36 @@
+.input,
+.taskMenuTitle,
+.descriptionInput {
+  background-color: inherit;
+  border: none;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  font-size: 1.2em;
+}
+
+.taskMenuTitle {
+  font-size: 1.5em;
+}
+
+.descriptionInput {
+  background-color: #31313119;
+  border-radius: 0.2em 0.2em 0 0;
+  width: 100%;
+  color: white;
+  font-size: 1em;
+  height: 5em;
+  padding: 0.5em;
+  border-bottom: 1px solid rgb(202, 202, 202);
+  resize: none;
+}
+textarea::-webkit-scrollbar {
+  width: 3px;
+  background-color: rgb(202, 202, 202);
+}
+
+textarea::-webkit-scrollbar-thumb {
+  background-color: rgba(147, 147, 147, 0.6);
+  border-radius: 4px;
+  background-clip: content-box;
+}

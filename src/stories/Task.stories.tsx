@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
-import { Task } from "../components/Task";
+import { Task } from "../components/Task/Task";
+import { Dayjs } from "dayjs";
 
 const meta = {
   title: "Task component",
@@ -11,16 +12,15 @@ type Story = StoryObj<typeof meta>;
 
 export const TaskExample: Story = {
   args: {
-    task: { title: "HTML", id: "1", isDone: true },
+    task: {
+      title: "HTML",
+      id: "1",
+      isDone: true,
+      editMode: false,
+      openDrawer: false,
+      date: new Dayjs(new Date(2030, 1, 1)),
+      description: "HTML task desc",
+    },
     todolist_id: "TodolistId_1",
-    changeStatus: (props: any) => {
-      console.log("Status changed: " + props);
-    },
-    changeTaskList: () => {
-      "Task List Changed: ";
-    },
-    removeTask: (props: any) => {
-      console.log("Ids for remove: " + props);
-    },
   },
 };

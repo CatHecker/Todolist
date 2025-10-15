@@ -1,0 +1,23 @@
+.task {
+  display: flex;
+  align-items: center;
+  background-color: var(--main-primary);
+  transition: background-color 0.5s ease;
+  border-radius: 0.5em;
+}
+
+.task_done {
+  color: #e0e0e0ff;
+}
+
+.task:hover {
+  background-color: var(--taskMenu-color);
+}
+
+.task_container {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task_container:last-child {
+  border-bottom: none;
+}

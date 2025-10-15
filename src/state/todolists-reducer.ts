@@ -1,8 +1,13 @@
 import { v1 } from "uuid";
-import { FilterValue, TodolistType } from "../App";
+import { FilterValue, TodolistType } from "../AppWithRedux";
 
 export type RemoveTodolistType = {
   type: "REMOVE-TODOLIST";
+  id: string;
+};
+
+export type AddDeletedTodolistType = {
+  type: "ADD_DELETED_TODOLIST";
   id: string;
 };
 
@@ -23,60 +28,90 @@ export type changeTodolistFilterActionType = {
   id: string;
   filter: FilterValue;
 };
+
+export type setModeTodolistActionType = {
+  type: "CHANGE-TODOLIST-MODE";
+  id: string;
+  editMode: boolean;
+};
 type ActionType =
   | RemoveTodolistType
   | AddTodolistType
   | changeTodolistTitleActionType
-  | changeTodolistFilterActionType;
+  | changeTodolistFilterActionType
+  | setModeTodolistActionType
+  | AddDeletedTodolistType;
 
 export const todolistId1 = v1();
 
 export const todolistId2 = v1();
 
-const initialState: Array<TodolistType> = [
-  {
-    id: todolistId1,
-    title: "What to learn",
-    filter: "all",
-  },
-  {
-    id: todolistId2,
-    title: "What to buy",
-    filter: "all",
-  },
-];
+export type TodolistStateType = {
+  todolists: TodolistType[];
+  lastDeletedTodolist: null | TodolistType;
+};
+
+const initialState: TodolistStateType = {
+  todolists: [
+    {
+      id: todolistId1,
+      title: "What to learn",
+      filter: "all",
+      editMode: false,
+    },
+  ],
+  lastDeletedTodolist: null,
+};
 
 export const todolistsReducer = (
-  state: Array<TodolistType> = initialState,
+  state: TodolistStateType = initialState,
   action: ActionType
-): Array<TodolistType> => {
+): TodolistStateType => {
   switch (action.type) {
     case "REMOVE-TODOLIST": {
-      return state.filter((tl) => action.id !== tl.id);
+      const deletedTodolist =
+        state.todolists.find((tl) => tl.id === action.id) || null;
+      return {
+        todolists: [...state.todolists].filter((tl) => action.id !== tl.id),
+        lastDeletedTodolist: deletedTodolist,
+      };
     }
     case "ADD-TODOLIST": {
-      return [
-        {
-          id: action.todolistId,
-          title: action.title,
-          filter: "all",
-        },
-        ...state,
-      ];
+      const newTodolist: TodolistType = {
+        id: action.todolistId,
+        title: action.title,
+        filter: "all",
+        editMode: false,
+      };
+      return { ...state, todolists: [newTodolist, ...state.todolists] };
     }
     case "CHANGE-TODOLIST-FILTER": {
-      const newTodolists = state.map((tl) => {
-        if (tl.id === action.id) tl.filter = action.filter;
+      const newTodolists = state.todolists.map((tl) => {
+        if (tl.id === action.id) return { ...tl, filter: action.filter };
         return tl;
       });
-      return newTodolists;
+      return { ...state, todolists: newTodolists };
     }
     case "CHANGE-TODOLIST-TITLE": {
-      const newTodolists = state.map((tl) => {
-        if (tl.id === action.id) tl.title = action.title;
+      const newTodolists = state.todolists.map((tl) => {
+        if (tl.id === action.id) return { ...tl, title: action.title };
         return tl;
       });
-      return newTodolists;
+      return { ...state, todolists: newTodolists };
+    }
+    case "CHANGE-TODOLIST-MODE": {
+      const newTodolists = state.todolists.map((tl) => {
+        if (tl.id === action.id) return { ...tl, editMode: action.editMode };
+        return tl;
+      });
+      return { ...state, todolists: newTodolists };
+    }
+    case "ADD_DELETED_TODOLIST": {
+      if (!state.lastDeletedTodolist) return state;
+      return {
+        lastDeletedTodolist: null,
+        todolists: [state.lastDeletedTodolist, ...state.todolists],
+      };
     }
     default:
       return state;
@@ -91,6 +126,10 @@ export const removeTodolistAC = (id: string): RemoveTodolistType => {
   return { type: "REMOVE-TODOLIST", id };
 };
 
+export const addDeletedTodolistAC = (id: string): AddDeletedTodolistType => {
+  return { type: "ADD_DELETED_TODOLIST", id };
+};
+
 export const changeTodolistFilterTypeAC = (
   id: string,
   filter: FilterValue
@@ -103,4 +142,11 @@ export const changeTodolistTitleAC = (
   title: string
 ): changeTodolistTitleActionType => {
   return { type: "CHANGE-TODOLIST-TITLE", id, title };
+};
+
+export const setModeTodolistAC = (
+  id: string,
+  editMode: boolean
+): setModeTodolistActionType => {
+  return { type: "CHANGE-TODOLIST-MODE", id, editMode };
 };

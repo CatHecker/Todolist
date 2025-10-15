@@ -1,6 +1,43 @@
+.App.pink {
+  --font-title-color: #fbf5ef;
+  --main-font: #e4dfda;
+  --main-bg: #c1666b;
+  --main-primary: #d4b483;
+  --taskMenu-color: #cea86f;
+  --dark-taskMenu-color: #ba9764;
+  --border-color: #c19149;
+}
+.App.white {
+  --font-tile-color: rgb(24, 24, 24);
+  --main-font: #e4dfda;
+  --main-bg: #f9f6f3;
+  --main-primary: #1976d2;
+  --taskMenu-color: #1768ba;
+  --dark-taskMenu-color: #145ba2;
+  --border-color: #e4dfda;
+}
+.App.dark {
+  --font-title-color: white;
+  --main-font: #e4dfda;
+  --main-bg: #433a3f;
+  --main-primary: #72a98f;
+  --taskMenu-color: #45a87a;
+  --dark-taskMenu-color: #368460;
+  --border-color: #368460;
+}
+
 li {
   list-style-type: none;
 }
 * {
   font-family: "verdana";
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  width: 100%;
+  background-color: var(--main-bg);
+  min-height: 95vh;
+  padding-bottom: 5vh;
 }
