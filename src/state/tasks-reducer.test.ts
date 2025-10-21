@@ -94,7 +94,7 @@ test("should remove task from correct todolist", () => {
 
 test("should add task to correct todolist", () => {
   const startState = getStartState();
-  const action = addTaskAC("juice", "todolistId2");
+  const action = addTaskAC({ title: "juice" }, "todolistId2");
   const endState = TaskReducer(startState, action);
 
   expect(endState["todolistId2"]).toHaveLength(3);
@@ -117,14 +117,7 @@ test("should add task with correct parameters", () => {
 
   const startState = getStartState();
 
-  const action = addTaskAC(
-    newTask.title,
-    "todolistId2",
-    newTask.id,
-    newTask.isDone,
-    newTask.date,
-    newTask.description
-  );
+  const action = addTaskAC(newTask, "todolistId2");
 
   const endState = TaskReducer(startState, action);
 

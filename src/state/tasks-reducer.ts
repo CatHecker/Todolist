@@ -5,7 +5,7 @@ import {
   RemoveTodolistType,
   todolistId1,
 } from "./todolists-reducer";
-import { SubtaskType, TaskType } from "../components/Todolist/Todolist";
+import { TaskType } from "../components/Todolist/Todolist";
 import dayjs, { Dayjs } from "dayjs";
 
 type RemoveTaskActionType = {
@@ -16,13 +16,8 @@ type RemoveTaskActionType = {
 
 type AddTaskActionType = {
   type: "ADD_TASK";
-  title: string;
+  task: Partial<TaskType>;
   todolistId: string;
-  id: string;
-  isDone: boolean;
-  date: null | Dayjs;
-  description: string;
-  subtasks: SubtaskType[];
 };
 
 type ChangeStatusType = {
@@ -161,17 +156,32 @@ export const TaskReducer = (
       const taskList = stateCopy[action.todolistId];
       const newTasks = [
         {
-          id: action.id || v1(),
-          title: action.title || "",
-          isDone: action.isDone || false,
+          id: v1(),
+          title: "",
+          isDone: false,
           editMode: false,
           openDrawer: false,
-          date: action.date || null,
-          description: action.description || "",
-          subtasks: action.subtasks,
+          date: null,
+          description: "",
+          subtasks: [],
+          ...action.task,
         },
         ...taskList,
       ];
+      console.log(
+        {
+          id: v1(),
+          title: "",
+          isDone: false,
+          editMode: false,
+          openDrawer: false,
+          date: null,
+          description: "",
+          subtasks: [],
+          ...action.task,
+        },
+        action.task
+      );
       stateCopy[action.todolistId] = newTasks;
       return stateCopy;
     }
@@ -320,23 +330,13 @@ export const removeTaskAC = (
 };
 
 export const addTaskAC = (
-  title: string,
-  todolistId: string,
-  id = v1(),
-  isDone = false,
-  date: Dayjs | null = null,
-  description: string = "",
-  subtasks: SubtaskType[] = []
+  task: Partial<TaskType>,
+  todolist_id: string
 ): AddTaskActionType => {
   return {
     type: "ADD_TASK",
-    title,
-    todolistId,
-    id,
-    isDone,
-    date,
-    description,
-    subtasks,
+    todolistId: todolist_id,
+    task,
   };
 };
 

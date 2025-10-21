@@ -12,7 +12,7 @@ export const AddItemInput = React.memo(
       setInputValue(e.currentTarget.value);
     };
     const enterHandler = (e: KeyboardEvent<HTMLInputElement>) => {
-      if (error !== null) setError("");
+      if (error !== "" && inputValue.trim() !== "") setError("");
       if (e.code === "Enter") addTask();
     };
     const addTask = () => {
@@ -20,7 +20,7 @@ export const AddItemInput = React.memo(
         addItem(inputValue);
         setInputValue("");
       } else {
-        setError("Empty string");
+        setError("Поле не должно быть пустым");
       }
     };
     return (
@@ -40,7 +40,7 @@ export const AddItemInput = React.memo(
             },
           }}
         />
-        <IconButton onClick={addTask} color={"primary"}>
+        <IconButton aria-label="Add item" onClick={addTask} color={"primary"}>
           <Add sx={{ color: "var(--main-font)" }} />
         </IconButton>
       </div>

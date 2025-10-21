@@ -54,8 +54,15 @@ export const Subtask = React.memo(
             className="input"
             title={subtask.title}
             onChange={changeTaskTitle}
+            label=""
           />
-          <Close className={style.closeBtn} onClick={() => removeTask()} />
+          <Close
+            role="button"
+            tabIndex={0}
+            className={style.closeBtn}
+            aria-label="Delete subtask"
+            onClick={() => removeTask()}
+          />
         </li>
       </div>
     );

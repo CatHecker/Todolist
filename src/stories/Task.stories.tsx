@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { Task } from "../components/Task/Task";
-import { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 const meta = {
   title: "Task component",
@@ -18,7 +18,7 @@ export const TaskExample: Story = {
       isDone: true,
       editMode: false,
       openDrawer: false,
-      date: new Dayjs(new Date(2030, 1, 1)),
+      date: dayjs(new Date(2030, 1, 1)),
       description: "HTML task desc",
     },
     todolist_id: "TodolistId_1",

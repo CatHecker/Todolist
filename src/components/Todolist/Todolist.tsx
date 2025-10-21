@@ -1,7 +1,6 @@
 import React, { useCallback } from "react";
 import { AddItemInput } from "../AddItemInput/addItemInput";
 import { EditableSpan } from "../EditableText/editableSpan";
-import { Button } from "@mui/material";
 import { Task } from "../Task/Task";
 import { FilterValue, TodolistType } from "../../AppWithRedux";
 import style from "./styles.module.css";
@@ -19,6 +18,7 @@ import {
 import { addTaskAC } from "../../state/tasks-reducer";
 import { Dayjs } from "dayjs";
 import { openSnackbarAC } from "../../state/snackbar-reducer";
+import { FilterButton } from "../FilterButton/FilterButton";
 
 export type SubtaskType = {
   id: string;
@@ -56,6 +56,7 @@ export const Todolist = React.memo(({ tl }: PropsType) => {
   const tasks = useSelector<AppRootState, TaskType[]>(
     (state) => state.tasks[tl.id]
   );
+
   const setTodolistMode = useCallback(
     (newMode: boolean) => {
       dispatch(setModeTodolistAC(tl.id, newMode));
@@ -65,14 +66,20 @@ export const Todolist = React.memo(({ tl }: PropsType) => {
 
   const addTask = useCallback(
     (title: string) => {
-      dispatch(addTaskAC(title, tl.id));
+      dispatch(
+        addTaskAC(
+          {
+            title,
+          },
+          tl.id
+        )
+      );
     },
     [dispatch, tl.id]
   );
 
   const setFilter = useCallback(
     (value: FilterValue) => {
-      console.log("try to change filter: ", value);
       dispatch(changeTodolistFilterTypeAC(tl.id, value));
     },
     [dispatch, tl.id]
@@ -118,41 +125,39 @@ export const Todolist = React.memo(({ tl }: PropsType) => {
       </h3>
       <AddItemInput addItem={addTask} placeholder="Add new Task" />
       <ul>
-        {tasksFiltered.map((task: TaskType) => {
-          return <Task key={task.id} task={task} todolist_id={tl.id} />;
-        })}
+        {tasksFiltered.length === 0 ? (
+          <p style={{ padding: "0.5em", color: "var(--main-font)" }}>
+            Нет задач
+          </p>
+        ) : (
+          tasksFiltered.map((task: TaskType) => {
+            return <Task key={task.id} task={task} todolist_id={tl.id} />;
+          })
+        )}
       </ul>
       <div style={{ marginTop: "0.5em" }}>
-        <Button
-          sx={
-            tl.filter === "all"
-              ? { bgcolor: "var(--taskMenu-color)", color: "white" }
-              : { color: "var(--main-font)" }
-          }
-          onClick={() => setFilter("all")}
+        <FilterButton
+          filterType={"all"}
+          curFilter={tl.filter}
+          setFilter={setFilter}
         >
           All
-        </Button>
-        <Button
-          sx={
-            tl.filter === "active"
-              ? { bgcolor: "var(--taskMenu-color)", color: "white" }
-              : { color: "var(--main-font)" }
-          }
-          onClick={() => setFilter("active")}
+        </FilterButton>
+
+        <FilterButton
+          filterType={"active"}
+          curFilter={tl.filter}
+          setFilter={setFilter}
         >
           Active
-        </Button>
-        <Button
-          sx={
-            tl.filter === "completed"
-              ? { bgcolor: "var(--taskMenu-color)", color: "white" }
-              : { color: "var(--main-font)" }
-          }
-          onClick={() => setFilter("completed")}
+        </FilterButton>
+        <FilterButton
+          filterType={"completed"}
+          curFilter={tl.filter}
+          setFilter={setFilter}
         >
           Completed
-        </Button>
+        </FilterButton>
       </div>
     </div>
   );

@@ -24,29 +24,10 @@ export const Task = React.memo(({ todolist_id, task }: TasksPropsType) => {
     dispatch(removeTaskAC(task.id, todolist_id));
     dispatch(
       openSnackbarAC(task.title, "task", () => {
-        dispatch(
-          addTaskAC(
-            task.title,
-            todolist_id,
-            task.id,
-            task.isDone,
-            task.date,
-            task.description ?? "",
-            task.subtasks
-          )
-        );
+        dispatch(addTaskAC(task, todolist_id));
       })
     );
-  }, [
-    dispatch,
-    task.id,
-    task.title,
-    task.isDone,
-    task.date,
-    task.description,
-    task.subtasks,
-    todolist_id,
-  ]);
+  }, [dispatch, task, todolist_id]);
 
   const changeTaskTitle = useCallback(
     (title: string) => {
@@ -88,12 +69,13 @@ export const Task = React.memo(({ todolist_id, task }: TasksPropsType) => {
   );
 
   return (
-    <div className={style.task_container}>
+    <ul className={style.task_container}>
       <li
         className={`${style.task} ${task.isDone ? style.task_done : ""}`}
         onClick={() => setOpen(true)}
       >
         <Checkbox
+          aria-label="Task status"
           onClick={(e) => e.stopPropagation()}
           onChange={changeStatus}
           checked={task.isDone}
@@ -117,6 +99,6 @@ export const Task = React.memo(({ todolist_id, task }: TasksPropsType) => {
         todolist_id={todolist_id}
         changeTaskTitle={changeTaskTitle}
       />
-    </div>
+    </ul>
   );
 });

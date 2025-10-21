@@ -34,13 +34,14 @@ export type setModeTodolistActionType = {
   id: string;
   editMode: boolean;
 };
+
 type ActionType =
   | RemoveTodolistType
   | AddTodolistType
   | changeTodolistTitleActionType
   | changeTodolistFilterActionType
   | setModeTodolistActionType
-  | AddDeletedTodolistType;
+  | AddDeletedTodolistType
 
 export const todolistId1 = v1();
 

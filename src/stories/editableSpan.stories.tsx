@@ -11,13 +11,13 @@ type Story = StoryObj<typeof meta>;
 
 export const SpanExample: Story = {
   args: {
-    title: "HTml",
+    title: "HTML",
     onChange: (newValue: string) => {
       console.log(newValue);
     },
     editMode: false,
     setMode: (mode: boolean) => {
-      console.log("setmode");
+      console.log("setmode: ", mode);
     },
   },
 };

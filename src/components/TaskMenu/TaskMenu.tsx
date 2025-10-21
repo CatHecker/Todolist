@@ -55,6 +55,7 @@ export default function TaskMenu({
           className="taskMenuTitle"
           title={task.title}
           onChange={changeTaskTitle}
+          label=""
         />
       </div>
       <List className={style.taskMenuList}>
@@ -70,6 +71,7 @@ export default function TaskMenu({
             title={task.description ?? ""}
             onChange={changeStateDescription}
             className="descriptionInput"
+            label="Task description"
           />
         </ListItem>
         <ListItem sx={{ display: "block" }}>
@@ -92,8 +94,8 @@ export default function TaskMenu({
     </Box>
   );
 
-  const appRoot = document.querySelector(".App");
-
+  const appRoot =
+    typeof document !== "undefined" ? document.querySelector(".App") : null;
   return (
     <Drawer
       container={appRoot}

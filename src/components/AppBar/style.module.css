@@ -8,3 +8,15 @@
 .open {
   background-color: var(--dark-taskMenu-color);
 }
+
+.appTitle {
+  font-weight: bold !important;
+  font-size: 2em !important;
+  margin: 0 0.5em !important;
+}
+
+.toolbar {
+  background-color: var(--taskMenu-color);
+  display: flex;
+  justify-content: space-between;
+}

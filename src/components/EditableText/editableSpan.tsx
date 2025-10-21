@@ -33,7 +33,7 @@ export const EditableSpan = React.memo(
       if (_title.length === 0) {
         return setError("Введите минимум 1 символ!");
       }
-      if (_title.length > 100) {
+      if (_title.length > 60) {
         return setError("Размер должен быть меньше 60 символов!");
       }
       setMode(false);

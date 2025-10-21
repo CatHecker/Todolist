@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react-webpack5";
 import { AddItemInput } from "../components/AddItemInput/addItemInput";
-import { string } from "prop-types";
 
 const meta = {
   title: "addItemInput component",

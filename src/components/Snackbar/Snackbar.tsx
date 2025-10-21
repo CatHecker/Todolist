@@ -35,7 +35,7 @@ export default function SimpleSnackbar() {
   });
 
   const handleUndo = () => {
-    snackbarData.undoFunc();
+    if (snackbarData.undoFunc) snackbarData.undoFunc();
     closeSnackbar();
   };
 

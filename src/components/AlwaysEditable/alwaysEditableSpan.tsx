@@ -6,6 +6,7 @@ type AlwaysEditableSpanPropsType = {
   onChange: (newValue: string) => void;
   className: string;
   multiline?: boolean;
+  label: string;
 };
 
 export const AlwaysEditableSpan = React.memo(
@@ -14,6 +15,7 @@ export const AlwaysEditableSpan = React.memo(
     onChange,
     className,
     multiline = false,
+    label,
   }: AlwaysEditableSpanPropsType) => {
     const [_title, setTitle] = useState(title);
     const onChangeTitleHandler = (
@@ -29,6 +31,7 @@ export const AlwaysEditableSpan = React.memo(
     };
     return multiline ? (
       <textarea
+        placeholder={label}
         className={style[className]}
         onBlur={() => {
           onChange(_title);
