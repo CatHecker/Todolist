@@ -1,10 +1,21 @@
 .text {
-  color: "red";
+  color: red;
   font-weight: 400;
-  font-size: "0.7em";
-  padding: "0.1em 0 1.5em 0";
-  white-space: "normal";
-  word-break: "break-word";
-  overflow-wrap: "break-word";
+  font-size: 0.7em;
+  padding: 0.1em 0 1.5em 0;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
   width: 250;
+}
+
+.ellipsis {
+  display: box;
+  box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.text_container {
+  margin: 0.2em;
 }

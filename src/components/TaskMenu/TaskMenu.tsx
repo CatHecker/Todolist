@@ -38,7 +38,7 @@ export default function TaskMenu({
     <Box
       className={style.box}
       sx={{
-        minWidth: { sx: 10, sm: 5, md: 6 },
+        width: { xs: 300, sm: 400, md: 400 },
         bgcolor: "var(--taskMenu-color)",
         height: "100vh",
       }}

@@ -45,7 +45,7 @@ function AppWithRedux() {
 
         <Grid container spacing={3}>
           {todolists.map((tl) => (
-            <Grid size={{ xs: 12, sm: 6, md: 3.5 }} key={tl.id}>
+            <Grid size={{ xs: 12, sm: 6, md: 3 }} key={tl.id}>
               <Paper style={{ backgroundColor: "inherit" }} elevation={0}>
                 <Todolist tl={tl} />
               </Paper>

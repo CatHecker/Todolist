@@ -49,7 +49,7 @@ export const EditableSpan = React.memo(
     }, [editMode]);
 
     return (
-      <div>
+      <div className={style.text_container}>
         {editMode ? (
           <TextField
             inputRef={inputRef}
@@ -60,7 +60,7 @@ export const EditableSpan = React.memo(
             onKeyDown={onEnterDownHandler}
           />
         ) : (
-          <span>{_title}</span>
+          <span className={style.ellipsis}>{_title}</span>
         )}
         {error.length ? <p className={style.text}>{error}</p> : null}
       </div>
