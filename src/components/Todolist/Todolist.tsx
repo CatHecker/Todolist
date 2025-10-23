@@ -119,6 +119,7 @@ export const Todolist = React.memo(({ tl }: PropsType) => {
           onChange={changeTodolistTitle}
         />
         <TodolistMenu
+          
           setMode={setTodolistMode}
           removeTodolist={removeTodolist}
         />

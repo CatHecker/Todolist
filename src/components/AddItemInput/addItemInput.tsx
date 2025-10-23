@@ -26,6 +26,7 @@ export const AddItemInput = React.memo(
     return (
       <div style={{ display: "flex", alignItems: "center" }}>
         <TextField
+          autoComplete="off"
           variant={"outlined"}
           placeholder={placeholder}
           onKeyDown={enterHandler}

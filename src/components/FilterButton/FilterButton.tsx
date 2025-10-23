@@ -18,6 +18,7 @@ export const FilterButton = ({
 }: FilterButtonPropsType) => {
   return (
     <Button
+      aria-label="change-theme button"
       sx={
         filterType === curFilter
           ? { bgcolor: "var(--taskMenu-color)", color: "white" }

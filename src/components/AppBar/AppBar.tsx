@@ -33,12 +33,16 @@ export const Header = React.memo(({ setTheme }: HeaderPropsType) => {
           }`}
         >
           <IconButton
+            aria-label="theme-change button"
             aria-haspopup="true"
             aria-expanded={openThemes}
             sx={{ marginRight: "0.5em" }}
             onClick={() => setOpenThemes(!openThemes)}
           >
-            <Brush sx={{ color: "white", fontSize: "1.2em" }} />
+            <Brush
+              aria-label="theme-change button"
+              sx={{ color: "white", fontSize: "1.2em" }}
+            />
           </IconButton>
           {openThemes ? (
             <ButtonGroup className={"button_group"} variant="text">

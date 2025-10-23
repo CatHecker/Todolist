@@ -24,6 +24,7 @@ export const TodolistMenu = React.memo(
     return (
       <div className="menu-container">
         <IconButton
+          aria-label="open-menu button"
           id="basic-button"
           aria-controls={status ? "basic-menu" : undefined}
           aria-haspopup="true"

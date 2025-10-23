@@ -1,3 +1,14 @@
+.App.dark,
+.App {
+  --font-title-color: white;
+  --main-font: #e4dfda;
+  --main-bg: #433a3f;
+  --main-primary: #72a98f;
+  --taskMenu-color: #45a87a;
+  --dark-taskMenu-color: #368460;
+  --border-color: #368460;
+}
+
 .App.pink {
   --font-title-color: #fbf5ef;
   --main-font: #e4dfda;
@@ -15,15 +26,6 @@
   --taskMenu-color: #1768ba;
   --dark-taskMenu-color: #145ba2;
   --border-color: #e4dfda;
-}
-.App.dark {
-  --font-title-color: white;
-  --main-font: #e4dfda;
-  --main-bg: #433a3f;
-  --main-primary: #72a98f;
-  --taskMenu-color: #45a87a;
-  --dark-taskMenu-color: #368460;
-  --border-color: #368460;
 }
 
 li {

@@ -75,7 +75,6 @@ export const Task = React.memo(({ todolist_id, task }: TasksPropsType) => {
         onClick={() => setOpen(true)}
       >
         <Checkbox
-          aria-label="Task status"
           onClick={(e) => e.stopPropagation()}
           onChange={changeStatus}
           checked={task.isDone}
