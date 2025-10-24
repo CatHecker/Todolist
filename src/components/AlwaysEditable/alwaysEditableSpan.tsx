@@ -41,7 +41,6 @@ export const AlwaysEditableSpan = React.memo(
       />
     ) : (
       <input
-        autoComplete="off"
         className={style[className]}
         onBlur={() => onChange(_title)}
         type="text"

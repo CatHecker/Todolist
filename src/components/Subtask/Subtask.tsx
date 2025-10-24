@@ -40,7 +40,7 @@ export const Subtask = React.memo(
       [dispatch, todolist_id, task.id, subtask.id]
     );
     return (
-      <div className={style.task_container}>
+      <ul className={style.task_container}>
         <li
           className={`${style.task} ${subtask.isDone ? style.task_done : ""}`}
         >
@@ -64,7 +64,7 @@ export const Subtask = React.memo(
             onClick={() => removeTask()}
           />
         </li>
-      </div>
+      </ul>
     );
   }
 );

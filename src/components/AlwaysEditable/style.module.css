@@ -34,3 +34,11 @@ textarea::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-clip: content-box;
 }
+
+.input {
+  flex-grow: 1; /* занимает все доступное место */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
